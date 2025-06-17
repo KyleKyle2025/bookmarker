@@ -5,9 +5,25 @@ var tableBody = document.getElementById("tableContent");
 var bookmarkList = [];
 
 function addBookmark() {
+  var name = bookmarkNameInput.value;
+  var url = bookmarkUrlInput.value;
+
+  
+  if (name === "" || url === "") {
+    alert("Please fill in both the Site Name and Site URL.");
+    return;
+  }
+
+  
+  if (!url.startsWith("http://") && !url.startsWith("https://")) {
+    alert("Please enter a valid URL that starts with http:// or https://");
+    return;
+  }
+
+  
   var bookmark = {
-    name: bookmarkNameInput.value,
-    url: bookmarkUrlInput.value
+    name: name,
+    url: url
   };
 
   bookmarkList.push(bookmark);
